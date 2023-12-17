@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content  %}
+
+<style>
+.receipe{
+  background: linear-gradient(to right, #d6697a, #87CEFA) !important;
+}
+
+form label{
+  color: #050505;
+}
+
+
+</style>
+<div class="container mt-5">
+  <form class="form col-6 mx-auto card p-4 shadow-lg receipe" action="/" method="post" enctype="multipart/form-data">
+          {%  csrf_token %}
+          <h2 class="mb-3">Add Receipe</h2>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+            <input type="text" name="receipe_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ obj.receipe_name }}">
+             </div>
+           <div class="mb-3">
+            <label for="ingredients" class="form-label">Recipe Ingredients</label>
+            <input type="text"  class="form-control" id="receipe_ingr" name="receipe_ingr" value="{{ obj.receipe_ingr}}"  >
+           </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword2" class="form-label">Receipe Descrption</label>
+           <textarea name="receipe_desc" class="form-control" id="" cols="10" rows="1"  value="{{ obj.receipe_desc }}"></textarea>
+            <!-- <input type="text" class="form-control" name="receipe_desc" id="exampleInputPassword2" value="{{ obj.receipe_desc }}"> -->
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Receipe Image</label>
+            <input type="file" class="form-control" name="receipe_img" id="exampleInputPassword1" value="{{ obj.receipe_img }}">
+            <input type="hidden" name="hid" id="hid" value="{{ hid }}">
+          </div>
+          <button type="submit" class="btn btn-success bt">Submit</button>
+    </form>
+      
+</div>
+
+  
+{% endblock %}

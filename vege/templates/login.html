@@ -1,0 +1,53 @@
+{% extends "layout.html" %} 
+{% block content %}
+
+
+<style>
+  .login{
+    background: linear-gradient(to right, #d6697a, #87CEFA) !important;
+  }
+  
+  form label{
+    color: #050505;
+  }
+  
+  
+  </style>
+<div class="container mt-5">
+  <form
+    class="col-6 mx-auto card p-4 shadow-lg login"
+    action="/login/"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <h1>Login</h1>
+    {% if messages %}
+    {{ messages.tags }}
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+      {{ message}}     
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="mb-3 mt-3">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        name="username"
+        aria-describedby="emailHelp"
+      />
+      
+    </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control"  name="password" id="exampleInputPassword1" />
+      </div>
+    
+    <button type="submit" class="btn btn-success mt-3">Submit</button>
+  </form>
+</div>
+{% endblock %}

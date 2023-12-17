@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content  %}
+
+<div class="container mt-5">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Number</th>
+            <th scope="col"> Name</th>
+            <th scope="col"> Ingredients</th>
+            <th scope="col">Descrption</th>
+            <th scope="col">Image</th>  
+            <th scope="col">edit</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>   
+        
+        {% for veges in vege %}   
+        
+        
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{veges.receipe_name}}</td>
+           <td>{{veges.receipe_ingr}}</td>
+            <td>{{veges.receipe_desc}}</td>
+            <td>
+              <img src="/media/{{veges.receipe_img}}" style="height: 100px;">
+            </td>
+            <td>
+              <a href="/{{veges.id}}/" class="btn btn-danger">Edit</a>
+            </td>
+            <td>
+              <a href="/delete_data/{{veges.id}}/" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+         
+      </table>
+</div>
+
+
+
+
+{% endblock %}
